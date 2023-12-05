@@ -1,0 +1,140 @@
+{
+  "name": "@hop-protocol/frontend",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=14",
+    "yarn": "^1.22.11"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudfront": "3.316.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@ethersproject/abi": "^5.7.0",
+    "@gnosis.pm/safe-apps-react-sdk": "^4.6.2",
+    "@gnosis.pm/safe-apps-sdk": "^7.8.0",
+    "@hop-protocol/core": "0.0.1-beta.209",
+    "@hop-protocol/sdk": "0.0.1-beta.577",
+    "@material-ui/core": "4.12.4",
+    "@material-ui/icons": "4.11.3",
+    "@material-ui/lab": "4.0.0-alpha.60",
+    "@mui/icons-material": "^5.14.3",
+    "@mui/lab": "^5.0.0-alpha.140",
+    "@mui/material": "^5.14.5",
+    "@mui/styles": "^5.14.5",
+    "@types/react-google-recaptcha": "^2.1.8",
+    "@web3-onboard/coinbase": "2.2.4",
+    "@web3-onboard/core": "2.20.3",
+    "@web3-onboard/gnosis": "2.1.10",
+    "@web3-onboard/injected-wallets": "2.10.1",
+    "@web3-onboard/walletconnect": "^2.4.7",
+    "classnames": "2.3.1",
+    "clsx": "1.2.1",
+    "copy-to-clipboard": "3.3.2",
+    "deepmerge": "4.2.2",
+    "ethereumjs-util": "7.1.5",
+    "ethers": "^5.7.1",
+    "fast-memoize": "2.5.2",
+    "keccak256": "1.0.3",
+    "lodash": "4.17.21",
+    "luxon": "1.28.0",
+    "merkletreejs": "0.2.32",
+    "numbro": "2.3.6",
+    "pluralize": "^8.0.0",
+    "qs": "6.11.0",
+    "react": "^17.0.2",
+    "react-confetti": "6.1.0",
+    "react-copy-to-clipboard": "5.1.0",
+    "react-dom": "^17.0.2",
+    "react-feather": "2.0.10",
+    "react-google-recaptcha": "2.1.0",
+    "react-jazzicon": "1.0.4",
+    "react-markdown": "8.0.3",
+    "react-query": "3.39.1",
+    "react-router-dom": "^6.15.0",
+    "react-scripts": "4.0.3",
+    "react-social-login-buttons": "3.6.1",
+    "react-table": "7.8.0",
+    "react-use": "^17.4.0",
+    "remark-gfm": "3.0.1",
+    "styled-components": "5.3.5",
+    "styled-system": "5.1.5",
+    "typescript": "5.1.6",
+    "use-async-memo": "1.2.4",
+    "usehooks-ts": "^2.9.1",
+    "web-vitals": "0.2.4"
+  },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
+  },
+  "scripts": {
+    "start": "REACT_APP_GIT_SHA=`git rev-parse --short HEAD` react-app-rewired start",
+    "dev": "BROWSER=none npm start",
+    "clean": "rimraf build",
+    "lint": "npx eslint --fix \"**/*.{ts,tsx}\"",
+    "build": "REACT_APP_GIT_SHA=`git rev-parse --short HEAD` INLINE_RUNTIME_CHUNK=false react-app-rewired --max_old_space_size=4096 build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "deploy": "npx --yes netlify-cli deploy --prod",
+    "deploy:ipfs": "npx --yes ipfs-deploy -p infura build --no-open --no-clipboard",
+    "deploy:local": "git stash && yarn clean && yarn build && yarn deploy",
+    "dnslink": "IPFS_HASH=$(npm run deploy:ipfs 2>&1 | tail -1) node ./scripts/update_dnslink.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@aws-sdk/client-route-53": "3.316.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/classnames": "^2.3.1",
+    "@types/jest": "^27.0.2",
+    "@types/lodash": "^4.14.176",
+    "@types/luxon": "^2.0.5",
+    "@types/node": "^16.11.3",
+    "@types/qs": "^6.9.7",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@types/react-router-dom": "^5.3.1",
+    "@types/react-table": "^7.7.10",
+    "@types/rebass": "^4.0.10",
+    "@types/styled-components": "^5.1.14",
+    "@types/styled-system": "^5.1.13",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "csp-html-webpack-plugin": "5.1.0",
+    "customize-cra": "1.0.0",
+    "eslint": "^7.15.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "lerna-sync-version": "0.0.5",
+    "prettier": "^2.5.1",
+    "react-app-rewired": "^2.2.1",
+    "rimraf": "^3.0.2"
+  }
+}
